@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>F1 GRID 2025</title>
+
+  <!-- STEP 1: Google Fonts loaded here -->
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;700&family=Rajdhani:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ================================
+       FOUNDATION CSS
+       This is your starting point.
+       Add more styles below each section!
+    ================================ */
+
+    /* -- Basic Reset & Body -- */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0a0a0a;
+      color: #f5f5f0;
+      font-family: 'Rajdhani', sans-serif;
+    }
+
+    /* -- Hero Section -- */
+    #hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: #0a0a0a;
+    }
+
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 120px;
+      color: #f5f5f0;
+      text-align: center;
+    }
+
+    .hero-title span {
+      color: #e10600; /* red accent */
+    }
+
+    .hero-sub {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 18px;
+      letter-spacing: 6px;
+      color: #888;
+      margin-top: 10px;
+      text-transform: uppercase;
+    }
+
+    /* -- Driver Section -- */
+    #drivers {
+      padding: 60px 24px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 64px;
+      margin-bottom: 40px;
+      border-left: 4px solid #e10600;
+      padding-left: 16px;
+    }
+
+    /* -- Driver Grid Layout -- */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    /* -- Driver Card -- */
+    .driver-card {
+      background: #111;
+      border: 1px solid #222;
+      padding: 20px;
+      cursor: pointer;
+    }
+
+    /* TIP: Add hover effects here!
+       Example:
+       .driver-card:hover { background: #1a1a1a; }
+    */
+
+    .driver-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      margin-bottom: 4px;
+    }
+
+    .driver-team {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 14px;
+      color: #888;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .driver-nickname {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-style: italic;
+      color: #ffd700;
+      font-size: 15px;
+    }
+
+    /* -- Teams Section -- */
+    #teams {
+      padding: 60px 24px;
+      background: #111;
+      margin-top: 60px;
+    }
+
+    .teams-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .teams-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 16px;
+    }
+
+    .team-card {
+      background: #0a0a0a;
+      border: 1px solid #222;
+      padding: 24px;
+    }
+
+    .team-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      margin-bottom: 6px;
+    }
+
+    .team-info {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 14px;
+      color: #888;
+      line-height: 1.6;
+    }
+
+    .team-info span {
+      color: #ffd700;
+    }
+
+    /* -- Did You Know Box -- */
+    .dyk-box {
+      margin-top: 10px;
+      padding: 10px;
+      background: rgba(225, 6, 0, 0.08);
+      border-left: 2px solid #e10600;
+      font-size: 13px;
+      font-family: 'Barlow Condensed', sans-serif;
+      color: #aaa;
+      line-height: 1.5;
+    }
+
+    /* -- Footer -- */
+    footer {
+      text-align: center;
+      padding: 40px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px;
+      letter-spacing: 3px;
+      color: #444;
+    }
+
+    footer span { color: #e10600; }
+
+  </style>
+</head>
+<body>
+
+  <!-- =====================
+       HERO SECTION
+  ===================== -->
+  <section id="hero">
+    <h1 class="hero-title">F<span>1</span> GRID</h1>
+    <p class="hero-sub">2025 Season — The Paddock</p>
+  </section>
+
+  <!-- =====================
+       DRIVERS SECTION
+  ===================== -->
+  <section id="drivers">
+    <h2 class="section-title">THE DRIVERS</h2>
+    <div class="grid" id="driverGrid">
+      <!-- Cards are built by JavaScript below -->
+    </div>
+  </section>
+
+  <!-- =====================
+       TEAMS SECTION
+  ===================== -->
+  <section id="teams">
+    <div class="teams-inner">
+      <h2 class="section-title">THE TEAMS</h2>
+      <div class="teams-grid" id="teamsGrid">
+        <!-- Cards are built by JavaScript below -->
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================
+       FOOTER
+  ===================== -->
+  <footer>
+    <p>F1 GRID 2025 — <span>EMERGING BUILDERS UNIT</span></p>
+  </footer>
+
+
+  <script>
+    // ================================
+    // FOUNDATION JAVASCRIPT
+    // This is your data + basic render.
+    // Add more features as you learn!
+    // ================================
+
+    // -- DRIVER DATA --
+    // Each driver is an object with properties.
+    // You can add more drivers or edit these!
+    const drivers = [
+      {
+        number: 1,
+        name: "Max Verstappen",
+        nickname: "Mad Max",
+        team: "Red Bull Racing",
+        teamColor: "#3671C6",
+        flag: "🇳🇱",
+        nationality: "Dutch",
+        dyk: "Max became the youngest ever F1 race winner at just 18 years old!"
+      },
+      {
+        number: 44,
+        name: "Lewis Hamilton",
+        nickname: "The GOAT",
+        team: "Ferrari",
+        teamColor: "#E8002D",
+        flag: "🇬🇧",
+        nationality: "British",
+        dyk: "Lewis holds records for most wins (103+) and most pole positions (104+)."
+      },
+      {
+        number: 16,
+        name: "Charles Leclerc",
+        nickname: "Il Predestinato",
+        team: "Ferrari",
+        teamColor: "#E8002D",
+        flag: "🇲🇨",
+        nationality: "Monégasque",
+        dyk: "Charles is the first Monégasque driver to ever win the Monaco Grand Prix!"
+      },
+      {
+        number: 4,
+        name: "Lando Norris",
+        nickname: "Lando Snorris",
+        team: "McLaren",
+        teamColor: "#FF8000",
+        flag: "🇬🇧",
+        nationality: "British",
+        dyk: "Lando is one of F1's biggest streamers — he games on Twitch between races!"
+      },
+      {
+        number: 14,
+        name: "Fernando Alonso",
+        nickname: "El Plan",
+        team: "Aston Martin",
+        teamColor: "#358C75",
+        flag: "🇪🇸",
+        nationality: "Spanish",
+        dyk: "Fernando is still racing F1 in his 40s and faster than drivers half his age!"
+      },
+      {
+        number: 63,
+        name: "George Russell",
+        nickname: "Mr. Saturday",
+        team: "Mercedes",
+        teamColor: "#00D2BE",
+        flag: "🇬🇧",
+        nationality: "British",
+        dyk: "George earned the nickname 'Mr. Saturday' for his incredible qualifying pace."
+      }
+      // TIP: Add more drivers here following the same pattern!
+    ];
+
+    // -- TEAM DATA --
+    const teams = [
+      { name: "Red Bull Racing", color: "#3671C6", principal: "Christian Horner",   drivers: ["Max Verstappen", "Sergio Pérez"] },
+      { name: "Ferrari",         color: "#E8002D", principal: "Frédéric Vasseur",   drivers: ["Charles Leclerc", "Lewis Hamilton"] },
+      { name: "McLaren",         color: "#FF8000", principal: "Andrea Stella",      drivers: ["Lando Norris", "Oscar Piastri"] },
+      { name: "Mercedes",        color: "#00D2BE", principal: "Toto Wolff",         drivers: ["George Russell", "Kimi Antonelli"] },
+      { name: "Aston Martin",    color: "#358C75", principal: "Mike Krack",         drivers: ["Fernando Alonso", "Lance Stroll"] }
+      // TIP: Add more teams here!
+    ];
+
+    // -- BUILD DRIVER CARDS --
+    // This loops through each driver and creates an HTML card for them
+    const driverGrid = document.getElementById('driverGrid');
+
+    drivers.forEach(function(driver) {
+      // Create a new div element
+      const card = document.createElement('div');
+      card.className = 'driver-card';
+
+      // Fill it with HTML content using the driver's data
+      card.innerHTML = `
+        <div class="driver-team" style="color: ${driver.teamColor}">${driver.flag} ${driver.team}</div>
+        <div class="driver-name">#${driver.number} ${driver.name}</div>
+        <div class="driver-nickname">"${driver.nickname}"</div>
+        <div class="dyk-box">
+          <strong style="color:#e10600">⚡ Did You Know?</strong><br>
+          ${driver.dyk}
+        </div>
+      `;
+
+      // Add the card to the grid on the page
+      driverGrid.appendChild(card);
+    });
+
+    // -- BUILD TEAM CARDS --
+    const teamsGrid = document.getElementById('teamsGrid');
+
+    teams.forEach(function(team) {
+      const card = document.createElement('div');
+      card.className = 'team-card';
+
+      card.innerHTML = `
+        <div class="team-name" style="color: ${team.color}">${team.name}</div>
+        <div class="team-info">
+          PRINCIPAL: <span>${team.principal}</span><br>
+          DRIVERS: ${team.drivers.join(' · ')}
+        </div>
+      `;
+
+      teamsGrid.appendChild(card);
+    });
+
+  </script>
+</body>
+</html>
